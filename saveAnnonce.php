@@ -17,12 +17,9 @@ require_once "core/utils.php";
     if( !$garage_id || !$name || !$price ){
         die("formulaire mal rempli");
     }
-    $pdo = new PDO('mysql:host=localhost;dbname=garages', 'garage', 'garage', [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
     $garage = findGarageById($garage_id);
     if(!$garage){
         die("Ce garage n'existe pas");
     }
+    insertAnnonce($name, $price, $garage_id);
     redirect("garage.php?id=$garage_id");

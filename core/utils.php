@@ -105,5 +105,4 @@ function deleteAnnonce(int $annonce_id, int $garage_id): void{
     $pdo = getPdo();
     $queryDelete = $pdo->prepare("DELETE FROM annonces WHERE id=:annonce_id");
     $queryDelete->execute(['annonce_id' =>$annonce_id]);
-    
 }
