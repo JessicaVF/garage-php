@@ -1,6 +1,6 @@
 <?php
-require_once "core/database.php";
-class Garage {
+require_once "core/model/Model.php";
+class Garage extends Model {
     /**
  * retourne un tableau contenant tous les garages de 
  * la table garages
@@ -9,9 +9,8 @@ class Garage {
  */
 public function findAll() : array
 {
-        $pdo = getPdo();
 
-        $resultat =  $pdo->query('SELECT * FROM garages');
+        $resultat =  $this->pdo->query('SELECT * FROM garages');
         
         $garages = $resultat->fetchAll();
 
@@ -30,9 +29,9 @@ public function findAll() : array
 public function find(int $garage_id)
 {
 
-  $pdo = getPdo();
+  
 
-  $maRequete = $pdo->prepare("SELECT * FROM garages WHERE id =:garage_id");
+  $maRequete = $this->pdo->prepare("SELECT * FROM garages WHERE id =:garage_id");
 
   $maRequete->execute(['garage_id' => $garage_id]);
 
@@ -49,9 +48,9 @@ public function find(int $garage_id)
  */
 public function delete(int $garage_id) :void
 {
-  $pdo = getPdo();
+  
 
-  $maRequete = $pdo->prepare("DELETE FROM garages WHERE id =:garage_id");
+  $maRequete = $this->pdo->prepare("DELETE FROM garages WHERE id =:garage_id");
 
   $maRequete->execute(['garage_id' => $garage_id]);
 

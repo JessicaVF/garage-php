@@ -1,5 +1,5 @@
 <?php
-require_once "core/database.php";
+
 require_once "core/utils.php";
 require_once "core/model/Garage.php";
 require_once "core/model/Annonce.php";

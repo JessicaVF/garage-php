@@ -1,15 +1,15 @@
 <?php
-require_once "core/database.php";
+require_once "core/model/Model.php";
 
-class Annonce {
+class Annonce extends Model {
     /**
  * Find all the annonces link to a garage
  * @param int $garage_id
  * @return array|bool
  */
 function findAllByGarage(int $garage_id){
-    $pdo = getPdo();
-    $maRequeteAnnonce = $pdo->prepare("SELECT * FROM annonces WHERE garage_id =:garage_id");
+    
+    $maRequeteAnnonce = $this->pdo->prepare("SELECT * FROM annonces WHERE garage_id =:garage_id");
     $maRequeteAnnonce->execute(['garage_id' =>$garage_id]);
     $annonces = $maRequeteAnnonce->fetchAll();
     return $annonces;
@@ -21,8 +21,8 @@ function findAllByGarage(int $garage_id){
  * @param int $garage_id
  */
 function insert(string $name, int $price, int $garage_id): void{
-    $pdo = getPdo();
-    $queryAdd = $pdo->prepare("INSERT INTO annonces (name, price, garage_id) VALUES (:name, :price, :garage_id)");
+    
+    $queryAdd = $this->pdo->prepare("INSERT INTO annonces (name, price, garage_id) VALUES (:name, :price, :garage_id)");
     $queryAdd->execute(['name' =>$name, 'price' =>$price, 'garage_id' =>$garage_id]);   
 }
 /**
@@ -31,8 +31,8 @@ function insert(string $name, int $price, int $garage_id): void{
  * @return array|bool
  */
 function find(int $annonce_id){
-    $pdo = getPdo();
-    $queryVerification = $pdo->prepare("SELECT * FROM annonces WHERE id=:annonce_id");
+    
+    $queryVerification = $this->pdo->prepare("SELECT * FROM annonces WHERE id=:annonce_id");
     $queryVerification->execute(['annonce_id' =>$annonce_id]);
     $annonce= $queryVerification->fetch();
     return $annonce;
@@ -44,8 +44,8 @@ function find(int $annonce_id){
  * @param int $garage_id
  */
 function delete(int $annonce_id, int $garage_id): void{
-    $pdo = getPdo();
-    $queryDelete = $pdo->prepare("DELETE FROM annonces WHERE id=:annonce_id");
+    
+    $queryDelete = $this->pdo->prepare("DELETE FROM annonces WHERE id=:annonce_id");
     $queryDelete->execute(['annonce_id' =>$annonce_id]);
 }
 }

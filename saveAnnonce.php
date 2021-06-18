@@ -1,7 +1,8 @@
 <?php
-require_once "core/database.php";
+//require_once "core/database.php";
 require_once "core/utils.php";
 require_once "core/model/Annonce.php";
+require_once "core/model/Garage.php";
     $name = null;
     $price = null;
     $garage_id = null;
@@ -18,7 +19,8 @@ require_once "core/model/Annonce.php";
     if( !$garage_id || !$name || !$price ){
         die("formulaire mal rempli");
     }
-    $garage = findGarageById($garage_id);
+    $modelGarage = new Garage();
+    $garage= $modelGarage->find($garage_id);
     if(!$garage){
         die("Ce garage n'existe pas");
     }
