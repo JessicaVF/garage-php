@@ -1,5 +1,6 @@
 <?php
-
+namespace Controllers;
+require_once "core/Controllers/Garage.php";
 require_once "core/utils.php";
 require_once "core/model/Garage.php";
 require_once "core/model/Annonce.php";
@@ -10,14 +11,7 @@ if(!empty($_GET['id']) && ctype_digit($_GET['id'])){
 if(!$garage_id){
     die("il faut entrer un id...");
 }
-$model = new Garage();
-$garage= $model->find($garage_id);
-$titreDeLaPage = $garage['name'];
+$model = new \Controllers\Garage();
+$model->show($garage_id);
 
-// Annonces
-$modelAnnonce = new Annonce();
-$annonces = $modelAnnonce->findAllByGarage($garage_id);
-//
-
-render("garages/garage", compact('garage', 'titreDeLaPage', 'annonces'));
 ?>

@@ -1,9 +1,8 @@
 <?php
 
 require_once "core/utils.php";
-require_once "core/model/Garage.php";
-$model = new Garage();
-$garages =$model->findAll();
-$titreDeLaPage = "Garages";
-render("garages/garages", compact('garages', 'titreDeLaPage'));
+require_once "core/Controllers/Garage.php";
+$model = new \Controllers\Garage();
+$model->index();
+
 

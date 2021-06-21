@@ -1,4 +1,5 @@
 <?php
+namespace Model;
 //require_once "core/database.php";
 require_once "core/utils.php";
 require_once "core/model/Annonce.php";
@@ -24,6 +25,6 @@ require_once "core/model/Garage.php";
     if(!$garage){
         die("Ce garage n'existe pas");
     }
-    $model = new Annonce();
+    $model = new \Model\Annonce();
     $model->insert($name, $price, $garage_id);
     redirect("garage.php?id=$garage_id");
