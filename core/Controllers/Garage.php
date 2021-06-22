@@ -17,6 +17,9 @@ class Garage extends Controller{
 
         \Rendering::render("garages/garages", compact('garages', 'titreDeLaPage'));
     }
+    /**
+     *  affiche un garage
+     */
     public function show(){
 
         $garage_id = null;
@@ -38,7 +41,9 @@ class Garage extends Controller{
 
         \Rendering::render("garages/garage", compact('garage', 'titreDeLaPage', 'annonces'));
     }
-
+    /**
+     * Delete a garage
+     */
 
     public function suppr(){
 
