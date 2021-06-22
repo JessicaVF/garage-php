@@ -32,7 +32,7 @@
         <br>
         <em> Price: </em> <?php echo $annonce['price']; ?>
         <br>
-        <a class="btn btn-danger" href="deleteAnnonce.php?id=<?php echo $annonce['id']?>">Delete this annonce </a>
+        <a class="btn btn-danger" href="index.php?controller=annonce&task=suppr&id=<?php echo $annonce['id']?>">Delete this annonce </a>
         <hr>
     <?php } ?>
 </div>
