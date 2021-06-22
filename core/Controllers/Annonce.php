@@ -28,7 +28,7 @@ class Annonce extends Controller{
         }
     
         $this->model->insert($name, $price, $garage_id);
-        \Http::redirect("garage.php?id=$garage_id");
+        \Http::redirect("index.php?controller=garage&task=show&id=$garage_id");
         
     }
     public function suppr(){
@@ -40,7 +40,8 @@ class Annonce extends Controller{
             }
             $garage_id= $annonce['garage_id'];
             $this->model->delete($annonce_id);
-            \Http::redirect("garage.php?id=$garage_id");
+            \Http::redirect("index.php?controller=garage&task=show&id=$garage_id");
+            
         }
         else{
             die("il faut entrer un id...");

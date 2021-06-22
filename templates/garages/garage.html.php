@@ -15,7 +15,7 @@
     </div>
     <a class="btn btn-primary" href="index.php">Back to home</a>
     <h5><u>Add an annonce</u></h3>
-    <form action="saveAnnonce.php" method="POST">
+    <form action="index.php?controller=annonce&task=save" method="POST">
         <input type="hidden" name="garage_id" value="<?php echo $garage["id"]?>">
         <input type="text" name="name" placeholder="name" required>
         <input type="number" name="price" placeholder="price" required>
