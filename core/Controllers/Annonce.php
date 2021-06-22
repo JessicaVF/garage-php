@@ -2,11 +2,10 @@
 namespace Controllers;
 
 require_once "core/utils.php";
-require_once "core/Model/Garage.php";
-require_once "core/Model/Annonce.php";
-require_once "core/Controllers/Garage.php";
 
-class Annonce{
+class Annonce extends Controller{
+    protected $modelName = \Model\Annonce::class;
+
     public function save(){
         $name = null;
         $price = null;
@@ -29,21 +28,20 @@ class Annonce{
         if(!$garage){
             die("Ce garage n'existe pas");
         }
-        $model = new \Model\Annonce();
-        $model->insert($name, $price, $garage_id);
+    
+        $this->model->insert($name, $price, $garage_id);
         redirect("garage.php?id=$garage_id");
         
     }
     public function suppr(){
         if(isset($_GET['id']) && !empty($_GET['id']) && ctype_digit ($_GET['id'])){
             $annonce_id = $_GET['id'];
-            $model = new \Model\Annonce();
-            $annonce= $model->find($annonce_id);
+            $annonce= $this->model->find($annonce_id);
             if(!$annonce){
                 die("Ce annonce n'existe pas");
             }
             $garage_id= $annonce['garage_id'];
-            $model-> delete($annonce_id);
+            $this->model->delete($annonce_id);
             redirect("garage.php?id=$garage_id");
         }
         else{

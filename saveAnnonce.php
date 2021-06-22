@@ -1,7 +1,7 @@
 <?php
 
 
-require_once "core/Controllers/Annonce.php";
+require_once "core/autoloading.php";
 
-$model = new \Controllers\Annonce();
-$model->save();
+$controller = new \Controllers\Annonce();
+$controller->save();

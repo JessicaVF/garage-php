@@ -1,7 +1,7 @@
 <?php
 
-require_once "core/Controllers/Garage.php";
+require_once "core/autoloading.php";
 
-$model = new \Controllers\Garage();
-$model->suppr();
+$controller = new \Controllers\Garage();
+$controller->suppr();
 

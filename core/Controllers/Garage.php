@@ -3,16 +3,15 @@
 namespace Controllers;
 
 require_once "core/utils.php";
-require_once "core/Model/Garage.php";
-require_once "core/model/Annonce.php";
 
-class Garage{
+class Garage extends Controller{
+    protected $modelName = \Model\Garage::class;
+
     /**
      * afficher l'accueil du site
      */
     public function index(){
-        $model = new \Model\Garage();
-        $garages =$model->findAll();
+        $garages =$this->model->findAll();
         $titreDeLaPage = "Garages";
         render("garages/garages", compact('garages', 'titreDeLaPage'));
     }
@@ -24,8 +23,7 @@ class Garage{
         if(!$garage_id){
             die("il faut entrer un id...");
         }
-        $model = new \Model\ Garage();
-        $garage= $model->find($garage_id);
+        $garage= $this->model->find($garage_id);
         $titreDeLaPage = $garage['name'];
         $modelAnnonce = new \Model\ Annonce();
         $annonces = $modelAnnonce->findAllByGarage($garage_id);
@@ -41,13 +39,13 @@ class Garage{
         if(!$garage_id){
             die("il faut entrer un id...");
         }
-        $model = new \Model\Garage();
-        $garage= $model->find($garage_id);
+
+        $garage= $this->model->find($garage_id);
 
         if(!$garage){
             die("Ce garage n'existe pas");
         }
-        $model->delete($garage_id);
+        $this->model->delete($garage_id);
         redirect("index.php");
 
 

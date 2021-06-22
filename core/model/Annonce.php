@@ -1,6 +1,6 @@
 <?php
 namespace Model;
-require_once "core/model/Model.php";
+
 
 class Annonce extends Model {
     protected $table = "annonces";
