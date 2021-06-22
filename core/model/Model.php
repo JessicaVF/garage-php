@@ -1,12 +1,12 @@
 <?php
+
 namespace Model;
-require_once "core/database.php";
 
 abstract class Model{
     protected $pdo;
     protected $table;
     public function __construct(){
-        $this->pdo = getPdo();
+        $this->pdo = \Database::getPdo();
     }
 /**
  * trouver un element par son id

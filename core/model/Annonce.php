@@ -1,8 +1,9 @@
 <?php
+
 namespace Model;
 
-
 class Annonce extends Model {
+
     protected $table = "annonces";
     /**
      * Find all the annonces link to a garage
