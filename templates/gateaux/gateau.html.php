@@ -21,12 +21,20 @@
             <p><?php echo $gateau['flavor'];?></p>
         </div>
     </div>
-        <?php }?>
+        <?php } foreach($recettes as $recette){?>
+            <hr>
+            <h6><?php echo $recette['name']?></h6>
+            <p><?php echo $recette['description']?></p>
+
+            <a class="btn btn-danger" href="index.php?controller=recette&task=suppr&id=<?php echo $recette['id']?>">Delete this recette </a>
+           
+        <?php } ?>
+    <hr>
         <form action="index.php?controller=gateau&task=create" method="POST">
             <button type="submit" name="id" value="<?php echo $gateau['id'] ?>" class="btn btn-warning">Modifier ce gateau</button>
-            </form>
+        </form>
     <hr>
-    <a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>
+        <a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>
     <br>
     <br>
 </div>

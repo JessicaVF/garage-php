@@ -2,10 +2,13 @@
 namespace Controllers;
 
 class Annonce extends Controller{
+
     protected $modelName = \Model\Annonce::class;
+
     /**
      * Add an annonce
      */
+    
     public function save(){
         $name = null;
         $price = null;
