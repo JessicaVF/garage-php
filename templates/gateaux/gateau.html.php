@@ -22,10 +22,9 @@
         </div>
     </div>
         <?php }?>
-        <form method="POST">
-        <input type="hidden" name="id" value=<?php echo $gateau['id']?>>
-        <input type="submit" value="Edit">
-      </form> 
+        <form action="index.php?controller=gateau&task=create" method="POST">
+            <button type="submit" name="id" value="<?php echo $gateau['id'] ?>" class="btn btn-warning">Modifier ce gateau</button>
+            </form>
     <hr>
     <a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>
     <br>

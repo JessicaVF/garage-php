@@ -19,10 +19,10 @@
     <form class="form" action="index.php?controller=gateau&task=edit" method="POST">
     <input type="hidden" name="id" value="<?php echo $gateau['id']?>">
         <div class="form-group">
-        <textarea name="name" cols="30" rows="10"><?php echo $gateau['name']?></textarea>
+        <textarea name="nameEdit" cols="30" rows="10"><?php echo $gateau['name']?></textarea>
     </div>
         <div class="form-group">
-        <textarea name="flavor"cols="30" rows="10"><?php echo $gateau['flavor']?></textarea>
+        <textarea name="flavorEdit"cols="30" rows="10"><?php echo $gateau['flavor']?></textarea>
     </div>
         <div class="form-group"><button class="btn btn-success" type="submit">Enregistrer les modifs</button>
     </div>
@@ -30,6 +30,7 @@
     </form>
 
 </div>
+<br>
 
 
 

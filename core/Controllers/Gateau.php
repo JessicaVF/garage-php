@@ -65,54 +65,58 @@ class Gateau extends Controller{
     /**
      * Add an annonce
      */
-    public function save(){
+    public function create(){
+        
+        $gateauACreer= false;
         $name = null;
         $flavor = null;
         
-        if(!empty($_POST['flavor'])){
-            $flavor = $_POST['flavor'];
+        if(!empty($_POST['flavor']) && !empty($_POST['name'])){
+            $flavor = htmlspecialchars($_POST['flavor']);
+            $name = htmlspecialchars($_POST['name']);
+            $gateauACreer = true;
         } 
-        if(!empty($_POST['name'])){
-            $name = $_POST['name'];
+        if($gateauACreer){
+
+            $this->model->insert($name, $flavor);
+            \Http::redirect("index.php?controller=gateau&task=index");
+        }else{
+
+            $modeEdition=false;
+
+            if( !empty($_POST['id']) && ctype_digit($_POST['id'])   ){
+               
+                $gateau_id = $_POST['id'];
+                $modeEdition = true;
+         
+            }
+            if(!$modeEdition){
+                $gateau = null;
+                $titreDeLaPage = "nouveau gateau";
+                \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage')); 
+            }else{ 
+                
+                $gateau = $this->model->find($gateau_id);
+                $nomGateau = $gateau['name'];
+                $titreDeLaPage = "Editer $nomGateau";
+                \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage')); 
+
+            }
         }
-        if( !$name || !$flavor ){
-            echo $flavor;
-            die("formulaire mal rempli");
-        }
-        
-        $this->model->insert($name, $flavor);
-        \Http::redirect("index.php?controller=gateau&task=index");
-        
     }
     /**
      * Edit le gateau
      */
     function edit(){
-        $id = null;
-        $name = null;
-        $flavor = null;
-        if(!empty($_POST['id'])){
+        
+        if(!empty($_POST['nameEdit']) && !empty($_POST['flavorEdit']) && !empty($_POST['id']) && ctype_digit($_POST['id'])){
+            $name = htmlspecialchars($_POST['nameEdit']);
+            $flavor = htmlspecialchars($_POST['flavorEdit']);
             $id = $_POST['id'];
-        }
-        if(!empty($_POST['flavorEdit'])){
-            $flavor = $_POST['flavorEdit'];
-        } 
-        if(!empty($_POST['nameEdit'])){
-            $name = $_POST['nameEdit'];
-        }
-        if( !$name || !$flavor || !$id ){
-            
-            echo $flavor;
-            
+            $this->model->edit($id, $name, $flavor);
+            \Http::redirect("index.php?controller=gateau&task=show&id=$id"); 
+        }else{      
             die("formulaire mal rempli");
         }
-        $gateau= $this->model->find($id);
-        if(!$gateau){
-            die("Le gateau n'existe pas");
-        }
-        $this->model->edit($id, $name, $flavor);
-        $titreDeLaPage = $name;
-
-        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage'));
     }
 }
