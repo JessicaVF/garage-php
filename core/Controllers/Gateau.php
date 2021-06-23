@@ -84,4 +84,35 @@ class Gateau extends Controller{
         \Http::redirect("index.php?controller=gateau&task=index");
         
     }
+    /**
+     * Edit le gateau
+     */
+    function edit(){
+        $id = null;
+        $name = null;
+        $flavor = null;
+        if(!empty($_POST['id'])){
+            $id = $_POST['id'];
+        }
+        if(!empty($_POST['flavorEdit'])){
+            $flavor = $_POST['flavorEdit'];
+        } 
+        if(!empty($_POST['nameEdit'])){
+            $name = $_POST['nameEdit'];
+        }
+        if( !$name || !$flavor || !$id ){
+            
+            echo $flavor;
+            
+            die("formulaire mal rempli");
+        }
+        $gateau= $this->model->find($id);
+        if(!$gateau){
+            die("Le gateau n'existe pas");
+        }
+        $this->model->edit($id, $name, $flavor);
+        $titreDeLaPage = $name;
+
+        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage'));
+    }
 }

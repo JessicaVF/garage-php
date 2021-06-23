@@ -13,10 +13,11 @@ foreach($gateaux as $gateau){ ?>
 
 
 <?php } ?>
-
+<br>
 <h5><u>Add an gateau</u></h3>
     <form action="index.php?controller=gateau&task=save" method="POST">
         <input type="text" name="name" placeholder="name" required>
         <input type="text" name="flavor" placeholder="flavor" required>
         <input type="submit" value="Add gateau">
     </form>
+    <br>
