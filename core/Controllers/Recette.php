@@ -41,7 +41,7 @@ Class Recette extends Controller{
         if($recetteACreer){
 
             $this->model->insert($name, $description, $gateau_id);
-            \Http::redirect("index.php?controller=gateau&task=index");
+            \Http::redirect("index.php?controller=gateau&task=show&id=$gateau_id");
 
         }else{
 
