@@ -67,7 +67,7 @@ class Gateau extends Controller{
 
     }
     /**
-     * Add an annonce
+     * Add an gateau
      */
     public function create(){
         

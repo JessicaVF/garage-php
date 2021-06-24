@@ -25,7 +25,12 @@
             <hr>
             <h6><?php echo $recette['name']?></h6>
             <p><?php echo $recette['description']?></p>
-
+            <br>
+            
+            <form action="index.php?controller=recette&task=create" method="POST">
+                <button type="submit" name="id" value="<?php echo $recette['id'] ?>" class="btn btn-warning">Modifier la recette</button>
+            </form>
+        <br>
             <a class="btn btn-danger" href="index.php?controller=recette&task=suppr&id=<?php echo $recette['id']?>">Delete this recette </a>
            
         <?php } ?>
@@ -33,6 +38,9 @@
         <form action="index.php?controller=gateau&task=create" method="POST">
             <button type="submit" name="id" value="<?php echo $gateau['id'] ?>" class="btn btn-warning">Modifier ce gateau</button>
         </form>
+    <hr>
+    <hr>
+    <button class="btn btn-dark"> <a href="index.php?controller=recette&task=create">Add an recette </a></button>
     <hr>
         <a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>
     <br>

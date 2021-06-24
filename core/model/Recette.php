@@ -17,5 +17,17 @@ class Recette extends Model{
         $recettes = $maRequeteRecette->fetchAll();
         return $recettes;
     }
+    /**
+   * Create a new recette
+   */
+    function insert(string $name, string $description): void{
+        
+        $queryAdd = $this->pdo->prepare("INSERT INTO $this->table (name, description) VALUES (:name, :description)");
+        $queryAdd->execute(['name' =>$name, 'description' =>$description]);   
+    }
 
+    function edit(int $id, string $name, string $description): void{
+        $queryEdit = $this->pdo->prepare("UPDATE gateaux SET name = :name, description = :description WHERE id=:id"); 
+        $queryEdit->execute(['name' =>$name, 'description' =>$description, 'id'=>$id]);
+    }
 }
