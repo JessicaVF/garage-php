@@ -37,7 +37,7 @@ if (!$recette) {?>
     <br>
 
 <?php }?>
-
-<a class="btn btn-primary" href="index.php?controller=recette&task=index">Back to home</a>
+<a class="btn btn-secondary" href="index.php?controller=gateau&task=show&id=<?php echo $_POST['gateau_id']?>">Cancel</a>
+<a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>
 <br>
 <br>
