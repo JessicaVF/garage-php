@@ -31,7 +31,9 @@
 
 </div>
 <br>
+<a class="btn btn-secondary" href="index.php?controller=gateau&task=show&id=<?php echo $gateau['id']?>">Cancel</a>
 <?php }?>
+
 <a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>
 <br>
 <br>
