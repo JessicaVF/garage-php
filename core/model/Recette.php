@@ -12,7 +12,7 @@ class Recette extends Model{
      */
     function findAllByGateau(int $gateau_id){
         
-        $maRequeteRecette = $this->pdo->prepare("SELECT * FROM recettes WHERE gateau_id =:gateau_id");
+        $maRequeteRecette = $this->pdo->prepare("SELECT * FROM $this->table WHERE gateau_id =:gateau_id");
         $maRequeteRecette->execute(['gateau_id' =>$gateau_id]);
         $recettes = $maRequeteRecette->fetchAll();
         return $recettes;
@@ -31,7 +31,7 @@ class Recette extends Model{
     }
 
     function edit(int $id, string $name, string $description): void{
-        $queryEdit = $this->pdo->prepare("UPDATE gateaux SET name = :name, description = :description WHERE id=:id"); 
+        $queryEdit = $this->pdo->prepare("UPDATE $this->table SET name = :name, description = :description WHERE id=:id"); 
         $queryEdit->execute(['name' =>$name, 'description' =>$description, 'id'=>$id]);
     }
 }

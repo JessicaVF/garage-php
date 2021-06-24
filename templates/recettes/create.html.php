@@ -22,12 +22,13 @@ if (!$recette) {?>
 
     <div class="container">
         <form class="form" action="index.php?controller=recette&task=edit" method="POST">
+        <input type="hidden" name="gateau_id" value="<?php echo $_POST['gateau_id']?>">
             <input type="hidden" name="id" value="<?php echo $recette['id']?>">
                 <div class="form-group">
                 <textarea name="nameEdit" cols="30" rows="10"><?php echo $recette['name']?></textarea>
             </div>
                 <div class="form-group">
-                <textarea name="DescriptionEdit"cols="30" rows="10"><?php echo $recette['description']?></textarea>
+                <textarea name="descriptionEdit"cols="30" rows="10"><?php echo $recette['description']?></textarea>
             </div>
                 <div class="form-group"><button class="btn btn-success" type="submit">Enregistrer les modifs</button>
             </div>

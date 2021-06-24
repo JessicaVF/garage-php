@@ -28,6 +28,7 @@
             <br>
             
             <form action="index.php?controller=recette&task=create" method="POST">
+                <input type= hidden name= gateau_id value = "<?php echo $gateau['id'] ?>">
                 <button type="submit" name="id" value="<?php echo $recette['id'] ?>" class="btn btn-warning">Modifier la recette</button>
             </form>
         <br>
