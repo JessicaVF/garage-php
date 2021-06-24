@@ -3,11 +3,15 @@
 
 if (!$recette) {?>
     <div class="container">
+        
         <form class="form" action="index.php?controller=recette&task=create" method="POST">
-            <div class="form-group"><textarea name="name" placeholder="nom du recette" id="" cols="30" rows="10"></textarea>
-        </div>
-            <div class="form-group"><textarea name="description" placeholder="description du recette" id="" cols="30" rows="10"></textarea>
-        </div>
+            <div class="form-group">
+                <textarea name="name" placeholder="nom du recette" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <textarea name="description" placeholder="description du recette" id="" cols="30" rows="10"></textarea>
+            </div>
+            <input type="hidden" name="id" value="<?php echo $_POST['id']?>">
             <div class="form-group"><button class="btn btn-success" type="submit">Envoyer</button>
         </div>
 

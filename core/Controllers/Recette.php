@@ -34,27 +34,35 @@ Class Recette extends Controller{
         if(!empty($_POST['description']) && !empty($_POST['name'])){
             $description = htmlspecialchars($_POST['description']);
             $name = htmlspecialchars($_POST['name']);
+            $gateau_id = $_POST['id'];
             $recetteACreer = true;
         } 
         
         if($recetteACreer){
 
-            $this->model->insert($name, $description);
+            $this->model->insert($name, $description, $gateau_id);
             \Http::redirect("index.php?controller=gateau&task=index");
+
         }else{
 
             $modeEdition=false;
 
-            if( !empty($_POST['id']) && ctype_digit($_POST['id'])   ){
-               
-                $recette_id = $_POST['id'];
-                $modeEdition = true;
-         
+            if(!isset($_POST['creation'])){
+
+                if( !empty($_POST['id']) && ctype_digit($_POST['id'])   ){
+            
+                    $recette_id = $_POST['id'];
+                    $modeEdition = true;
+                }
+
             }
+            
             if(!$modeEdition){
+
                 $recette = null;
                 $titreDeLaPage = "nouveau recette";
                 \Rendering::render('recettes/create', compact('recette', 'titreDeLaPage'));
+            
             }else{ 
                 
                 $recette = $this->model->find($recette_id);

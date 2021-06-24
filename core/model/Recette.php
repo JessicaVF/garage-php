@@ -19,11 +19,15 @@ class Recette extends Model{
     }
     /**
    * Create a new recette
+   * @param string $name
+   * @param string $description
+   * @param int $gateau_id
+   * 
    */
-    function insert(string $name, string $description): void{
+    function insert(string $name, string $description, int $gateau_id): void{
         
-        $queryAdd = $this->pdo->prepare("INSERT INTO $this->table (name, description) VALUES (:name, :description)");
-        $queryAdd->execute(['name' =>$name, 'description' =>$description]);   
+        $queryAdd = $this->pdo->prepare("INSERT INTO $this->table (name, description, gateau_id) VALUES (:name, :description, :gateau_id)");
+        $queryAdd->execute(['name' =>$name, 'description' =>$description, 'gateau_id' => $gateau_id]);   
     }
 
     function edit(int $id, string $name, string $description): void{
