@@ -39,7 +39,11 @@ class Gateau extends Controller{
 
         $recettes = $modelRecette->findAllByGateau($gateau_id);
 
-        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage', 'recettes'));
+        $modelMake = new \Model\ Make();
+
+        $makes = $modelMake->findAllByGateau($gateau_id);
+
+        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage', 'recettes', 'makes'));
     }
     /**
      * Delete a gateau

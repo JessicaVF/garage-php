@@ -7,6 +7,8 @@ class Gateau extends Model {
   protected $table = "gateaux";
   /**
    * Create a new gateau
+   * @param string $name
+   * @param string $flavor
    */
   function insert(string $name, string $flavor): void{
         
