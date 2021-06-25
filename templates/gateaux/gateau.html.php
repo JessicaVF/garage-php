@@ -42,7 +42,7 @@
     <!-- Creation of recette -->
     <form action="index.php?controller=recette&task=create" method="POST">
             <input type="hidden"  name="creation">
-            <button type="submit" name="id" value="<?php echo $gateau->id ?>" class="btn btn-success">Create new recette</button>
+            <button type="submit" name="gateau_id" value="<?php echo $gateau->id ?>" class="btn btn-success">Create new recette</button>
     </form>
     <hr>
         <a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>

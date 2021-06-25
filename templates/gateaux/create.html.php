@@ -17,12 +17,12 @@
 
     <div class="container">
     <form class="form" action="index.php?controller=gateau&task=edit" method="POST">
-    <input type="hidden" name="id" value="<?php echo $gateau['id']?>">
+    <input type="hidden" name="id" value="<?php echo $gateau->id?>">
         <div class="form-group">
-        <textarea name="nameEdit" cols="30" rows="10"><?php echo $gateau['name']?></textarea>
+        <textarea name="nameEdit" cols="30" rows="10"><?php echo $gateau->name?></textarea>
     </div>
         <div class="form-group">
-        <textarea name="flavorEdit"cols="30" rows="10"><?php echo $gateau['flavor']?></textarea>
+        <textarea name="flavorEdit"cols="30" rows="10"><?php echo $gateau->flavor?></textarea>
     </div>
         <div class="form-group"><button class="btn btn-success" type="submit">Enregistrer les modifs</button>
     </div>
@@ -31,7 +31,7 @@
 
 </div>
 <br>
-<a class="btn btn-secondary" href="index.php?controller=gateau&task=show&id=<?php echo $gateau['id']?>">Cancel</a>
+<a class="btn btn-secondary" href="index.php?controller=gateau&task=show&id=<?php echo $gateau->id?>">Cancel</a>
 <?php }?>
 
 <a class="btn btn-primary" href="index.php?controller=gateau&task=index">Back to home</a>

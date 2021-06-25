@@ -57,7 +57,7 @@ class Gateau extends Controller{
             die("il faut entrer un id...");
         }
 
-        $gateau= $this->model->find($gateau_id);
+        $gateau= $this->model->find($gateau_id, $this->modelName);
 
         if(!$gateau){
             die("Ce gateau n'existe pas");
@@ -101,8 +101,8 @@ class Gateau extends Controller{
                 \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage')); 
             }else{ 
                 
-                $gateau = $this->model->find($gateau_id);
-                $nomGateau = $gateau['name'];
+                $gateau = $this->model->find($gateau_id, $this->modelName);
+                $nomGateau = $gateau->name;
                 $titreDeLaPage = "Editer $nomGateau";
                 \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage')); 
 

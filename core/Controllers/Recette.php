@@ -10,11 +10,11 @@ Class Recette extends Controller{
     public function suppr(){
         if(!empty($_GET['id']) && ctype_digit ($_GET['id'])){
             $recette_id = $_GET['id'];
-            $recette= $this->model->find($recette_id);
+            $recette= $this->model->find($recette_id, $this->modelName);
             if(!$recette){
                 die("Ce recette n'existe pas");
             }
-            $gateau_id= $recette['gateau_id'];
+            $gateau_id= $recette->gateau_id;
             $this->model->delete($recette_id);
             \Http::redirect("index.php?controller=gateau&task=show&id=$gateau_id");
             
@@ -66,8 +66,8 @@ Class Recette extends Controller{
             
             }else{ 
                 
-                $recette = $this->model->find($recette_id);
-                $nomRecette = $recette['name'];
+                $recette = $this->model->find($recette_id, $this->modelName);
+                $nomRecette = $recette->name;
                 $titreDeLaPage = "Editer $nomRecette";
                 \Rendering::render('recettes/create', compact('recette', 'titreDeLaPage'));
 
