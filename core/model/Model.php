@@ -1,6 +1,7 @@
 <?php
 
 namespace Model;
+use PDO;
 
 abstract class Model{
     protected $pdo;
@@ -29,15 +30,15 @@ abstract class Model{
     /**
  * retourne un tableau contenant tous les elemements de 
  * la table X
- * 
+ * @param string $className
  * @return array
  */
-public function findAll() : array
+public function findAll(string $className) : array
 {
 
         $resultat =  $this->pdo->query("SELECT * FROM {$this->table}");
         
-        $items = $resultat->fetchAll();
+        $items = $resultat->fetchAll(PDO::FETCH_CLASS, $className);
 
         return $items;
 

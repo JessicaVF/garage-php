@@ -11,15 +11,11 @@ class Gateau extends Controller{
      */
     public function index(){
 
-        $gateaux =$this->model->findAll();
-
-        $modelMake = new \Model\ Make();
-
-        $makes = $modelMake->findAll();
-        
+        $gateaux =$this->model->findAll($this->modelName);
+       
         $titreDeLaPage = "Gateaux";
 
-        \Rendering::render("gateaux/gateaux", compact('gateaux', 'titreDeLaPage', 'makes'));
+        \Rendering::render("gateaux/gateaux", compact('gateaux', 'titreDeLaPage'));
     }
      /**
      *  affiche un gateau

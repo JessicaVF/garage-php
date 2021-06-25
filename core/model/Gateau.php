@@ -5,6 +5,18 @@ namespace Model;
 class Gateau extends Model {
 
   protected $table = "gateaux";
+  public $id;
+  public $flavor;
+  
+  /**
+   * Get the "makes"
+   */
+  public function getMakes(){
+    $modelMake = new \Model\Make();
+    $makes = $modelMake ->findAllByGateau($this->id);
+    return $makes;
+  }
+
   /**
    * Create a new gateau
    * @param string $name
