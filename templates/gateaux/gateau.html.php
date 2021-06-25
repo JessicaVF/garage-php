@@ -1,16 +1,8 @@
 <div class="container">
     
 
-    <?php if(!empty($_POST['id']) && $_POST['id']== $gateau['id']){
-      ?>
-    <form action="index.php?controller=gateau&task=edit" method="POST">
-          <input type="hidden" name="id" value=<?php echo $gateau['id']?>>
-          <input type="hidden" name="edit" value="edit">
-          <input type="text" name="nameEdit" value= <?php echo $gateau['name']?>>
-          <input type="text" name="flavorEdit" value= <?php echo $gateau['flavor']?>>
-          <input type="submit" value="Edit"> 
-      </form>
-      <?php } else{ ?>
+    
+      
         <div class="row">
         <div class="col">
             <h2>Name:</h2> 
@@ -21,7 +13,10 @@
             <p><?php echo $gateau['flavor'];?></p>
         </div>
     </div>
-        <?php } foreach($recettes as $recette){?>
+    <form action="index.php?controller=gateau&task=create" method="POST">
+            <button type="submit" name="id" value="<?php echo $gateau['id'] ?>" class="btn btn-warning">Modifier ce gateau</button>
+        </form>
+        <?php foreach($recettes as $recette){?>
             <hr>
             <h6><?php echo $recette['name']?></h6>
             <p><?php echo $recette['description']?></p>
@@ -35,12 +30,8 @@
             <a class="btn btn-danger" href="index.php?controller=recette&task=suppr&id=<?php echo $recette['id']?>">Delete this recette </a>
            
         <?php } ?>
+   
     <hr>
-        <form action="index.php?controller=gateau&task=create" method="POST">
-            <button type="submit" name="id" value="<?php echo $gateau['id'] ?>" class="btn btn-warning">Modifier ce gateau</button>
-        </form>
-    <hr>
-    
     <!-- Creation of recette -->
     <form action="index.php?controller=recette&task=create" method="POST">
             <input type="hidden"  name="creation">
