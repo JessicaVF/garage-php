@@ -12,6 +12,7 @@ class Gateau extends Model {
    * Get the "makes"
    */
   public function getMakes(){
+    
     $modelMake = new \Model\Make();
     $makes = $modelMake ->findAllByGateau($this->id);
     return $makes;

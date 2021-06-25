@@ -6,7 +6,8 @@ class Make extends Model{
 
     protected $table = "makes";
 
-    
+   
+
     public function findAllByGateau($gateau_id){
 
         $maRequetemake = $this->pdo->prepare("SELECT * FROM makes WHERE gateau_id =:gateau_id");

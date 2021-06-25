@@ -31,19 +31,16 @@ class Gateau extends Controller{
             die("il faut entrer un id...");
         }
 
-        $gateau= $this->model->find($gateau_id);
+        $gateau= $this->model->find($gateau_id, $this->modelName);
 
-        $titreDeLaPage = $gateau['name'];
+        $titreDeLaPage = $gateau ->name;
 
         $modelRecette = new \Model\ Recette();
 
         $recettes = $modelRecette->findAllByGateau($gateau_id);
+        
 
-        $modelMake = new \Model\ Make();
-
-        $makes = $modelMake->findAllByGateau($gateau_id);
-
-        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage', 'recettes', 'makes'));
+        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage', 'recettes'));
     }
     /**
      * Delete a gateau
