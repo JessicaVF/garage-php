@@ -16,10 +16,14 @@ class Make extends Model{
         return $makes;
 
     }
-    
+    public function findAllByRecette($recette_id){
 
+        $maRequetemake = $this->pdo->prepare("SELECT * FROM makes WHERE recette_id =:recette_id");
+        $maRequetemake->execute(['recette_id'=>$recette_id]);
+        $makes = $maRequetemake->rowCount();
+        return $makes;
 
-
+    }
     /**
     * Create a new "make"
     */

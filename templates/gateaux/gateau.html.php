@@ -24,10 +24,10 @@
         </form>
         <?php foreach($recettes as $recette){?>
             <hr>
-            <h6><?php echo $recette->name?></h6>
-            <p><?php echo $recette->description?></p>
-            <br>
-            <a class="btn btn-secondary"> Make </a>
+            <h6><?php echo $recette->name; ?></h6>
+            <p><?php echo $recette->description; ?></p>
+            <p><em>Makes: </em><?php echo $recette->getMakes(); ?></p>
+                <a class="btn btn-secondary"> Make </a>
             <br>
             <form action="index.php?controller=recette&task=create" method="POST">
                 <input type= hidden name= gateau_id value = "<?php echo $gateau->id ?>">

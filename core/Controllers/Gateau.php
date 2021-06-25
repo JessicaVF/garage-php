@@ -35,9 +35,9 @@ class Gateau extends Controller{
 
         $titreDeLaPage = $gateau ->name;
 
-        $modelRecette = new \Model\ Recette();
+        $modelRecette = new \Model\Recette();
 
-        $recettes = $modelRecette->findAllByGateau($gateau_id);
+        $recettes = $modelRecette->findAllByGateau($gateau_id, \Model\Recette::class);
         
 
         \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage', 'recettes'));

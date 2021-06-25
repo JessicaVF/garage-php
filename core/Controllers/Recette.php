@@ -6,6 +6,7 @@ Class Recette extends Controller{
 
     protected $modelName = \Model\Recette::class;
 
+    
     public function suppr(){
         if(!empty($_GET['id']) && ctype_digit ($_GET['id'])){
             $recette_id = $_GET['id'];
