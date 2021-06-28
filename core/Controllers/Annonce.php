@@ -27,7 +27,7 @@ class Annonce extends Controller{
             die("formulaire mal rempli");
         }
         $modelGarage = new \Model\Garage();
-        $garage= $modelGarage->find($garage_id);
+        $garage= $modelGarage->find($garage_id, $this->modelName);
         if(!$garage){
             die("Ce garage n'existe pas");
         }
@@ -39,11 +39,11 @@ class Annonce extends Controller{
     public function suppr(){
         if(isset($_GET['id']) && !empty($_GET['id']) && ctype_digit ($_GET['id'])){
             $annonce_id = $_GET['id'];
-            $annonce= $this->model->find($annonce_id);
+            $annonce= $this->model->find($annonce_id, $this->modelName);
             if(!$annonce){
                 die("Ce annonce n'existe pas");
             }
-            $garage_id= $annonce['garage_id'];
+            $garage_id= $annonce->garage_id;
             $this->model->delete($annonce_id);
             \Http::redirect("index.php?controller=garage&task=show&id=$garage_id");
             

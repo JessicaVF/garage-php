@@ -11,7 +11,7 @@ if (!$recette) {?>
             <div class="form-group">
                 <textarea name="description" placeholder="description du recette" id="" cols="30" rows="10"></textarea>
             </div>
-            <input type="hidden" name="id" value="<?php echo $_POST['id']?>">
+            <input type="hidden" name="id" value="<?php echo $_POST['gateau_id']?>">
             <div class="form-group"><button class="btn btn-success" type="submit">Envoyer</button>
         </div>
 

@@ -2,21 +2,21 @@
     <div class="row">
         <div class="col">
             <h2>Name:</h2> 
-            <p> <?php echo $garage['name'];?></p>
+            <p> <?php echo $garage->name;?></p>
         </div>
         <div class="col">
             <h2>Description:</h2>
-            <p><?php echo $garage['description'];?></p>
+            <p><?php echo $garage->description;?></p>
         </div>
         <div class="col">
             <h2>Address:</h2>
-            <p> <?php echo $garage['address'];?></p>
+            <p> <?php echo $garage->address;?></p>
         </div>
     </div>
     <a class="btn btn-primary" href="index.php">Back to home</a>
     <h5><u>Add an annonce</u></h3>
     <form action="index.php?controller=annonce&task=save" method="POST">
-        <input type="hidden" name="garage_id" value="<?php echo $garage["id"]?>">
+        <input type="hidden" name="garage_id" value="<?php echo $garage->id?>">
         <input type="text" name="name" placeholder="name" required>
         <input type="number" name="price" placeholder="price" required>
         <input type="submit" value="Add annonce">
@@ -28,11 +28,11 @@
     <h5>This garage still has not annonces</h5>
     <?php } ?>
     <?php foreach($annonces as $annonce){?>
-        <em> Car: </em> <?php echo $annonce['name']; ?>
+        <em> Car: </em> <?php echo $annonce->name; ?>
         <br>
-        <em> Price: </em> <?php echo $annonce['price']; ?>
+        <em> Price: </em> <?php echo $annonce->price; ?>
         <br>
-        <a class="btn btn-danger" href="index.php?controller=annonce&task=suppr&id=<?php echo $annonce['id']?>">Delete this annonce </a>
+        <a class="btn btn-danger" href="index.php?controller=annonce&task=suppr&id=<?php echo $annonce->id?>">Delete this annonce </a>
         <hr>
     <?php } ?>
 </div>

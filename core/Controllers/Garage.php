@@ -11,7 +11,7 @@ class Garage extends Controller{
      */
     public function index(){
 
-        $garages =$this->model->findAll();
+        $garages =$this->model->findAll($this->modelName);
 
         $titreDeLaPage = "Garages";
 
@@ -31,9 +31,9 @@ class Garage extends Controller{
             die("il faut entrer un id...");
         }
 
-        $garage= $this->model->find($garage_id);
+        $garage= $this->model->find($garage_id, $this->modelName);
 
-        $titreDeLaPage = $garage['name'];
+        $titreDeLaPage = $garage->name;
 
         $modelAnnonce = new \Model\ Annonce();
 
@@ -56,7 +56,7 @@ class Garage extends Controller{
             die("il faut entrer un id...");
         }
 
-        $garage= $this->model->find($garage_id);
+        $garage= $this->model->find($garage_id, $this->modelName);
 
         if(!$garage){
             die("Ce garage n'existe pas");
