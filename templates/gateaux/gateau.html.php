@@ -18,7 +18,10 @@
             </div>
             
         </div>
-    <a class="btn btn-secondary"> Make </a>
+        <form action="index.php?controller=make&task=save" method="post">
+        <input type="hidden" name="gateau_id" value =<?php echo $gateau->id?>>
+        <input class="btn btn-secondary" type="submit" value="make">
+        </form>
     <form action="index.php?controller=gateau&task=create" method="POST">
             <button type="submit" name="id" value="<?php echo $gateau->id ?>" class="btn btn-warning">Modifier ce gateau</button>
         </form>
@@ -27,7 +30,13 @@
             <h6><?php echo $recette->name; ?></h6>
             <p><?php echo $recette->description; ?></p>
             <p><em>Makes: </em><?php echo $recette->getMakes(); ?></p>
-                <a class="btn btn-secondary"> Make </a>
+            
+
+            <form action="index.php?controller=make&task=save" method="post">
+                <input type="hidden" name="recette_id" value =<?php echo $recette->id?>>
+                <input class="btn btn-secondary" type="submit" value="make">
+            </form>
+
             <br>
             <form action="index.php?controller=recette&task=create" method="POST">
                 <input type= hidden name= gateau_id value = "<?php echo $gateau->id ?>">

@@ -11,7 +11,12 @@
         <p><strong>Flavor: </strong> <?php echo $gateau->flavor; ?>  </p>
         <p><strong> Makes: </strong> <?php echo $gateau->getMakes(); ?> </p>
         
-        <a class="btn btn-secondary" href=""> Make </a>
+        <form action="index.php?controller=make&task=save" method="post">
+        <input type="hidden" name="gateau_id" value =<?php echo $gateau->id?>>
+        <input class="btn btn-secondary" type="submit" value="make">
+        </form>
+        <br>
+        <br>
         <a class="btn btn-success" href="index.php?controller=gateau&task=show&id=<?php echo $gateau->id?>">Check this gateau </a>
         <a class="btn btn-danger" href="index.php?controller=gateau&task=suppr&id=<?php echo $gateau->id?>">Delete this gateau </a>    
 </div>
