@@ -15,13 +15,17 @@
             <div class="col">
                 <h2>Makes:</h2>
                 <p><?php echo $gateau->getMakes(); ?></p>
+            
             </div>
             
+            
         </div>
+        
         <form action="index.php?controller=make&task=save" method="post">
         <input type="hidden" name="gateau_id" value =<?php echo $gateau->id?>>
         <input class="btn btn-secondary" type="submit" value="make">
         </form>
+        <br>
     <form action="index.php?controller=gateau&task=create" method="POST">
             <button type="submit" name="id" value="<?php echo $gateau->id ?>" class="btn btn-warning">Modifier ce gateau</button>
         </form>
