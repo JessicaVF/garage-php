@@ -15,11 +15,10 @@ class Gateau extends Controller{
        
         $titreDeLaPage = "Gateaux";
 
-        // $userModel = new User::class;
+        $userModel = new \Model\ User();
+        $user = $userModel->getUser();
 
-        // $user = $userModel
-
-        \Rendering::render("gateaux/gateaux", compact('gateaux', 'titreDeLaPage'));
+        \Rendering::render("gateaux/gateaux", compact('gateaux', 'titreDeLaPage', 'user'));
     }
      /**
      *  affiche un gateau

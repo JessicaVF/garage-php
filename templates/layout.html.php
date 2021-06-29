@@ -22,9 +22,11 @@
         <a class="nav-link" href="index.php?controller=gateau&task=index">Gateaux</a>
         <a class="nav-link" href="index.php?controller=user&task=index">Users</a>
 
-        <?php if(isLoggedIn()){ ?>
+        <?php 
+        var_dump($user);
+        if($user){ ?>
           <a class="nav-link" href="index.php?controller=user&task=logout">Logout</a>
-        <?php}else {?>
+        <?php}elseif(!$user){?>
         <a class="nav-link" href="index.php?controller=user&task=login">Login</a>
         <?php } ?>
       </div>

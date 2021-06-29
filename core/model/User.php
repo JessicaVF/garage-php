@@ -37,17 +37,29 @@ class User extends Model{
         }
         
         $_SESSION["user"] = array('id'=> $user->id, 'username' => $username, 'email'=>$user->email);
-      
-            
+    
         return true;
 
     }
     public function logout(){
         session_unset();
     }
+    public function isLoggedIn(){
+
+        if($_SESSION["user"]){
+            return true;
+        }
+        return false;
+
+    }
     public function getUser(){
-        echo $_SESSION["user"]['id'];
-        // if($this->login())
+        
+        if($this->isLoggedIn()){
+            
+            $user = $this->find($_SESSION["user"]['id'], \Model\User::class);
+            return $user;
+
+        }
     }
 
 }

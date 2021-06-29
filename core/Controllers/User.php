@@ -26,7 +26,12 @@ class User extends Controller{
         $username = "a";
         $password = "a";
         $user = $this->model->login($username, $password);
-        echo $user;
+        
+        \Http::redirect("index.php?controller=gateau&task=index");
     }
     
+    public function logout(){
+        $user = $this->model->logout();
+        \Http::redirect("index.php?controller=gateau&task=index");
+    }
 }
