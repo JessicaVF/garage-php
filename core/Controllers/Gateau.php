@@ -15,6 +15,10 @@ class Gateau extends Controller{
        
         $titreDeLaPage = "Gateaux";
 
+        // $userModel = new User::class;
+
+        // $user = $userModel
+
         \Rendering::render("gateaux/gateaux", compact('gateaux', 'titreDeLaPage'));
     }
      /**

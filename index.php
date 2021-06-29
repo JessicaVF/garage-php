@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "core/autoloading.php";
 
 
@@ -14,8 +15,7 @@ require_once "core/autoloading.php";
     <title>Document</title>
 </head>
 <body>
-    <a href=index.php?controller=gateau&task=index>Gateaux</a>
-    <a href=index.php?controller=Garage&task=index>Garages</a>
+
     
 </body>
 </html>

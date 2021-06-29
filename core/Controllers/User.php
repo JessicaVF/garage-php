@@ -2,6 +2,7 @@
 namespace Controllers;
 
 class User extends Controller{
+
     protected $modelName = \Model\User::class;
 
     public function index(){
@@ -12,4 +13,20 @@ class User extends Controller{
 
         \Rendering::render("users/users", compact('users', 'titreDeLaPage'));
     }
+
+    public function login(){
+
+        // if(!empty($_POST['username']) && !empty($_POST['password'])){
+        //     $username = $_POST['username'];
+        //     $password = $_POST['password'];
+        // }
+        // else{
+        //     die("no username or password have been introduce");
+        // }
+        $username = "a";
+        $password = "a";
+        $user = $this->model->login($username, $password);
+        echo $user;
+    }
+    
 }

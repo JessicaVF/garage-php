@@ -28,7 +28,7 @@
         <br>
     <form action="index.php?controller=gateau&task=create" method="POST">
             <button type="submit" name="id" value="<?php echo $gateau->id ?>" class="btn btn-warning">Modifier ce gateau</button>
-        </form>
+    </form>
         <?php foreach($recettes as $recette){?>
             <hr>
             <h6><?php echo $recette->name; ?></h6>
