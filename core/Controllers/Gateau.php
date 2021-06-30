@@ -40,10 +40,13 @@ class Gateau extends Controller{
 
         $modelRecette = new \Model\Recette();
 
+        $userModel = new \Model\ User();
+        $user = $userModel->getUser();
+
         $recettes = $modelRecette->findAllByGateau($gateau_id, \Model\Recette::class);
         
 
-        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage', 'recettes'));
+        \Rendering::render("gateaux/gateau", compact('gateau', 'titreDeLaPage', 'recettes', 'user'));
     }
     /**
      * Delete a gateau

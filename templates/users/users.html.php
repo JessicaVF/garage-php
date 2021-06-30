@@ -1,10 +1,11 @@
+
 <?php 
 
-foreach($users as $user){ ?>
+foreach($users as $utilisateur){ ?>
 
-    <div class="row border border-dark bg-info">
-        <p><strong>Username: </strong>   <?php echo $user->username; ?>  </p>
-        <p><strong> Email: </strong> <?php echo $user->email ?> </p>
+<div class="row border border-dark bg-info">
+        <p><strong>Username: </strong>   <?php echo $utilisateur->username; ?>  </p>
+        <p><strong> Email: </strong> <?php echo $utilisateur->email ?> </p>
         
-
+        </div>
 <?php }?>

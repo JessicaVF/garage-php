@@ -11,7 +11,28 @@ class User extends Controller{
 
         $titreDeLaPage = "users";
 
-        \Rendering::render("users/users", compact('users', 'titreDeLaPage'));
+        $userModel = new \Model\ User();
+        $user = $userModel->getUser();
+
+        \Rendering::render("users/users", compact('users', 'titreDeLaPage', 'user'));
+    }
+
+    public function show(){
+
+        $user_id = null;
+
+        if(!empty($_GET['id']) && ctype_digit($_GET['id'])){
+            $user_id = $_GET['id'];
+        }
+        if(!$user_id){
+            die("il faut entrer un id...");
+        }
+
+        $user= $this->model->find($user_id, $this->modelName);
+
+        $titreDeLaPage = $user ->username;
+
+        \Rendering::render("users/user", compact('user', 'titreDeLaPage'));
     }
 
     public function signIn(){

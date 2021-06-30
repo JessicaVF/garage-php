@@ -30,7 +30,7 @@
         <?php 
         
           if(!$user){ ?>
-            <a class="nav-link" href="index.php?controller=user&task=signIn">Login</a>
+            <a class="nav-link" href="index.php?controller=user&task=signIn">Login | SignUp</a>
 
         <?php } ?>
         
