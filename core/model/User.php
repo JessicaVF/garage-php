@@ -30,14 +30,15 @@ class User extends Model{
         
         $user= $this->findByUsername($username);
 
-        if(!$user & $user->password !== $password ){
+        if(!$user || $user->password !== $password ){
+                        
 
             return false;
         
         }
         
         $_SESSION["user"] = array('id'=> $user->id, 'username' => $username, 'email'=>$user->email);
-    
+        
         return true;
 
     }
