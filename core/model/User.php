@@ -62,5 +62,16 @@ class User extends Model{
 
         }
     }
+    public function createAccount(User $user){
+        
+        $queryAdd = $this->pdo->prepare("INSERT INTO $this->table (username, password, email) VALUES (:username, :password, :email)");
+        $queryAdd->execute(['username' =>$user->username, 'password' =>$user->password, 'email' =>$user->email]); 
+        
+    }
+    public function setPassword($passwordValue){
+        
+        $this->password= $passwordValue;
+
+    }
 
 }

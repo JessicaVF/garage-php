@@ -34,7 +34,7 @@
             <h6><?php echo $recette->name; ?></h6>
             <p><?php echo $recette->description; ?></p>
             <p><em>Makes: </em><?php echo $recette->getMakes(); ?></p>
-            
+            <p><em>Author: </em><?php echo $recette->findAuthor()->username; ?></p>
 
             <form action="index.php?controller=make&task=save" method="post">
                 <input type="hidden" name="recette_id" value =<?php echo $recette->id?>>

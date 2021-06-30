@@ -52,4 +52,21 @@ class User extends Controller{
         $user = $this->model->logout();
         \Http::redirect("index.php?controller=gateau&task=index");
     }
+
+    public function signUp(){
+
+        if(!empty($_POST['usernameCreation']) && !empty($_POST['emailCreation']) && !empty($_POST['passwordCreation']) && !empty($_POST['passwordConfirmation']) && $_POST['passwordCreation']==$_POST['passwordConfirmation']){
+            
+            $user = $this->model;
+            $user->username= $_POST['usernameCreation'];
+            $user->email = $_POST['emailCreation'];
+            $user->setPassword(htmlspecialchars($_POST['passwordCreation']));
+            $user->createAccount($user);
+            \Http::redirect("index.php?controller=gateau&task=index");
+        }
+        else{
+            die("Did you fill in all the boxes? The two passwords have to match!");
+        }
+        
+    }
 }

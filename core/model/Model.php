@@ -17,15 +17,23 @@ abstract class Model{
  * @param integer $id
  * @return array|bool
  */
-    public function find(int $id, $className){
-        $maRequete = $this->pdo->prepare("SELECT * FROM {$this->table}  WHERE id =:id");
+    public function find(int $id, $className, ? string $table = null){
 
-        $maRequete->execute(['id' => $id]);
 
-        $result = $maRequete->fetchObject($className);
-        
-        return $result;
-    }
+        $sql = "SELECT * FROM {$this->table}  WHERE id =:id";
+
+        if(!empty($table)){
+            $sql = "SELECT * FROM $table  WHERE id =:id";
+        }
+
+            $maRequete = $this->pdo->prepare($sql);
+
+            $maRequete->execute(['id' => $id]);
+
+            $result = $maRequete->fetchObject($className);
+            
+            return $result;
+        }
     
     /**
  * retourne un tableau contenant tous les elemements de 
