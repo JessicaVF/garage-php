@@ -15,6 +15,10 @@
             <div class="col">
                 <h2>Makes:</h2>
                 <p><?php echo $gateau->getMakes(); ?></p>
+            </div>
+            <div class="col">
+                <h2>Autor:</h2>
+                <p><?php echo $gateau->findAuthor()->username; ?></p>
             
             </div>
             

@@ -10,7 +10,7 @@
         <p><strong>Name: </strong>   <?php echo $gateau->name; ?>  </p>
         <p><strong>Flavor: </strong> <?php echo $gateau->flavor; ?>  </p>
         <p><strong> Makes: </strong> <?php echo $gateau->getMakes(); ?> </p>
-        
+        <p><strong> Author: </strong> <?php echo $gateau->findAuthor()->username; ?> </p>
         <form action="index.php?controller=make&task=save" method="post">
         <input type="hidden" name="gateau_id" value =<?php echo $gateau->id?>>
         <input class="btn btn-secondary" type="submit" value="make">

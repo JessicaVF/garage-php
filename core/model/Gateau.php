@@ -36,4 +36,10 @@ class Gateau extends Model {
      $queryEdit->execute(['name' =>$name, 'flavor' =>$flavor, 'id'=>$id]);
   }
   
+  public function findAuthor(){
+
+    $author = $this->find($this->user_id, \Model\User::class, "users");
+    return $author;
+
+}
 }
