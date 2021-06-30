@@ -23,12 +23,18 @@
         <a class="nav-link" href="index.php?controller=user&task=index">Users</a>
 
         <?php 
-        var_dump($user);
-        if($user){ ?>
-          <a class="nav-link" href="index.php?controller=user&task=logout">Logout</a>
-        <?php}elseif(!$user){?>
-        <a class="nav-link" href="index.php?controller=user&task=login">Login</a>
+          
+          if($user){ ?>
+            <a class="nav-link" href="index.php?controller=user&task=signOut">Logout</a>
         <?php } ?>
+        <?php 
+        
+          if(!$user){ ?>
+            <a class="nav-link" href="index.php?controller=user&task=signIn">Login</a>
+
+        <?php } ?>
+        
+        
       </div>
     </div>
   </div>

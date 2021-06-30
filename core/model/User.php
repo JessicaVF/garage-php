@@ -46,7 +46,7 @@ class User extends Model{
     }
     public function isLoggedIn(){
 
-        if($_SESSION["user"]){
+        if(isset($_SESSION['user']) & !empty($_SESSION['user'])){
             return true;
         }
         return false;

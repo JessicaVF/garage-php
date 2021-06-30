@@ -14,7 +14,7 @@ class User extends Controller{
         \Rendering::render("users/users", compact('users', 'titreDeLaPage'));
     }
 
-    public function login(){
+    public function signIn(){
 
         // if(!empty($_POST['username']) && !empty($_POST['password'])){
         //     $username = $_POST['username'];
@@ -30,7 +30,7 @@ class User extends Controller{
         \Http::redirect("index.php?controller=gateau&task=index");
     }
     
-    public function logout(){
+    public function signOut(){
         $user = $this->model->logout();
         \Http::redirect("index.php?controller=gateau&task=index");
     }
