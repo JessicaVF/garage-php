@@ -57,15 +57,23 @@
             <p><em>Author: </em><?php echo $recette->findAuthor()->username; ?></p>
 
             
-            <?php if($user){ ?>
+            <?php if($user){ 
+                if($user->hasMade($gateau)){ ?>
+
+                <form action="index.php?controller=make&task=unsave" method="post">
+                    <input type="hidden" name="recette_id" value =<?php echo $recette->id?>>
+                    <input class="btn btn-success" type="submit" value="Made!">
+                </form>
+                <br>
+            <?php }else { ?>
 
                 <form action="index.php?controller=make&task=save" method="post">
-                <input type="hidden" name="recette_id" value =<?php echo $recette->id?>>
-                <input class="btn btn-secondary" type="submit" value="make">
-            </form>
+                    <input type="hidden" name="recette_id" value =<?php echo $recette->id?>>
+                    <input class="btn btn-secondary" type="submit" value="To make">
+                </form>
+                <br>
 
-            <br>
-            <?php 
+            <?php }  
                 if($user->isAuthor($recette)){ ?> 
             <form action="index.php?controller=recette&task=create" method="POST">
                 <input type= hidden name= gateau_id value = "<?php echo $gateau->id ?>">
