@@ -26,21 +26,29 @@
         </div>
         
         
-        <?php if($user){ ?>
-            
-            <form action="index.php?controller=make&task=save" method="post">
-                <input type="hidden" name="gateau_id" value =<?php echo $gateau->id?>>
-                <input class="btn btn-secondary" type="submit" value="make">
-            </form>
-            <br>
+        <?php if($user){ 
 
-        <?php 
+            if($user->hasMade($gateau)){ ?> 
+                        <form action="index.php?controller=make&task=unsave" method="post">
+                                <input type="hidden" name="gateau_id" value =<?php echo $gateau->id?>>
+                                <input class= "btn btn-success" type="submit" value="made!">
+                        </form>
+                        <br>
+        <?php }else{ ?>
+                        <form action="index.php?controller=make&task=save" method="post">
+                                <input type="hidden" name="gateau_id" value =<?php echo $gateau->id?>>
+                                <input class= "btn btn-secondary" type="submit" value="to make">
+                        </form>
+                        <br>
+                        
+            <?php } 
 
             if($user->isAuthor($gateau)){ ?> 
                 <form action="index.php?controller=gateau&task=create" method="POST">
                     <button type="submit" name="id" value="<?php echo $gateau->id ?>" class="btn btn-warning">Modifier ce gateau</button>
                 </form>
-        <?php }} ?>
+        <?php }
+    } ?>
         <?php foreach($recettes as $recette){?>
             <hr>
             <h6><?php echo $recette->name; ?></h6>

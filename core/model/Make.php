@@ -37,11 +37,20 @@ class Make extends Model{
         $queryAdd->execute(['gateau_id' =>$gateau_id, 'recette_id' =>$recette_id]);   
     
     }
-    public function findByUserAndItem($gateau, $user)
+    public function findByUserAndItem(object $item, User $user)
     {
         
-        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE gateau_id =:gateau_id AND user_id =:user_id ");
-        $query->execute(['gateau_id'=>$gateau->id, 'user_id'=>$user->id]);
+        $sql = "SELECT * FROM makes WHERE recette_id = :item_id AND user_id = :user_id";
+
+
+        if(isset($item->flavor)){
+
+            $sql = "SELECT * FROM makes WHERE gateau_id = :item_id AND user_id = :user_id";
+
+        }
+
+        $query = $this->pdo->prepare($sql);
+        $query->execute(['item_id'=>$item->id, 'user_id'=>$user->id]);
         $make = $query->fetch();
         
         if($make)
