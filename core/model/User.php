@@ -76,7 +76,7 @@ class User extends Model{
 
     public function isAuthor(Object $gateauOuRecette)
     
-       {
+    {
             /// on veut comparer $this-id au user_id de cette recette ou ce gateau
 
             if($this->id == $gateauOuRecette->user_id ){
@@ -86,6 +86,21 @@ class User extends Model{
                 return false;
             }
 
-       }
+    }
+    public function hasMade(object $gateau){
+        
+        $make = new \Model\Make();
+        
+       
+
+        if($make->findByUserAndItem($gateau, $this))
+        {   
+            return true;
+
+        }else{
+            
+            return false;
+        }
+    }
 
 }
