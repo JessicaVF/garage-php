@@ -74,4 +74,18 @@ class User extends Model{
 
     }
 
+    public function isAuthor(Object $gateauOuRecette)
+    
+       {
+            /// on veut comparer $this-id au user_id de cette recette ou ce gateau
+
+            if($this->id == $gateauOuRecette->user_id ){
+                return true;
+            }else{
+
+                return false;
+            }
+
+       }
+
 }

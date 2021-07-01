@@ -101,16 +101,18 @@ class Gateau extends Controller{
                 $modeEdition = true;
          
             }
+            $userModel = new \Model\ User();
+            $user = $userModel->getUser();
             if(!$modeEdition){
                 $gateau = null;
                 $titreDeLaPage = "nouveau gateau";
-                \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage')); 
+                \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage', 'user')); 
             }else{ 
                 
                 $gateau = $this->model->find($gateau_id, $this->modelName);
                 $nomGateau = $gateau->name;
                 $titreDeLaPage = "Editer $nomGateau";
-                \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage')); 
+                \Rendering::render('gateaux/create', compact('gateau','titreDeLaPage', 'user')); 
 
             }
         }
