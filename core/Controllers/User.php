@@ -90,4 +90,39 @@ class User extends Controller{
         }
         
     }
+
+    public function signInApi(){
+
+        
+        if(!empty($_POST['username']) && !empty($_POST['password'])){
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+            
+            
+            if($this->model->login($username, $password)){
+
+                $user= $this->model->getUser();
+               
+                header('Access-Control-Allow-Origin: *');
+                echo json_encode($user);
+            }
+            else{
+                
+                die("The username or the password are no correct");
+            }
+        }
+        else{
+
+            $message=("Introduce the required info");
+            header('Access-Control-Allow-Origin: *');
+            echo json_encode($message);
+        }
+    }
+    public function signOutApi(){
+        $user = $this->model->logout();
+        $message=("log-out!");
+        header('Access-Control-Allow-Origin: *');
+        echo json_encode($message);
+    }
+    
 }
