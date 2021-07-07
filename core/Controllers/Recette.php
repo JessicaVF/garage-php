@@ -92,5 +92,22 @@ Class Recette extends Controller{
             die("formulaire mal rempli");
         }
     }
-
+    /**
+     * suppr one recette in API version
+     */
+    public function supprRecetteApi(){
+        if(!empty($_POST['id']) && ctype_digit ($_POST['id'])){
+            $recette_id = $_POST['id'];
+            $recette= $this->model->find($recette_id, $this->modelName);
+            if(!$recette){
+                die("Ce recette n'existe pas");
+            }
+            $gateau_id= $recette->gateau_id;
+            $this->model->delete($recette_id);
+        }
+        else{
+            die("il faut entrer un id...");
+        }
+        header("Access-Control-Allow-Origin: *");    
+    }
 }

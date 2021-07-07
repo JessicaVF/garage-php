@@ -6,6 +6,7 @@ class Gateau extends Model {
 
   protected $table = "gateaux";
   public $id;
+  public $name;
   public $flavor;
   
   /**

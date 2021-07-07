@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace Controllers;
 
 class Gateau extends Controller{
@@ -20,6 +22,7 @@ class Gateau extends Controller{
 
         \Rendering::render("gateaux/gateaux", compact('gateaux', 'titreDeLaPage', 'user'));
     }
+        
      /**
      *  affiche un gateau
      */
@@ -132,4 +135,46 @@ class Gateau extends Controller{
             die("formulaire mal rempli");
         }
     }
+    /**
+     * afficher l'accueil du site - version API
+     */
+    public function indexApi(){
+
+        $gateaux =$this->model->findAll($this->modelName);
+       
+        $titreDeLaPage = "Gateaux";
+
+        $userModel = new \Model\ User();
+        $user = $userModel->getUser();
+       
+        header("Access-Control-Allow-Origin: *");
+        echo json_encode($gateaux);
+
+    }
+    /**
+     * Passing info of the gateau to do API
+     */
+    public function showApi(){
+
+        $gateau= $this->model->find($_GET['id'], $this->modelName);
+
+        $modelRecette = new \Model\Recette();
+
+        $userModel = new \Model\ User();
+        $user = $userModel->getUser();
+
+        $recettes = $modelRecette->findAllByGateau($_GET['id'], \Model\Recette::class);
+
+        header("Access-Control-Allow-Origin: *");
+        
+        echo json_encode(['gateau'=>$gateau, 'recettes'=>$recettes]);
+       
+    }
+    
 }
+
+
+
+    
+
+        
